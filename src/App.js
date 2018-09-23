@@ -1,17 +1,21 @@
 import React, { Component } from 'react'
 import './App.css'
+import axios from 'axios'
 
 class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      count: 0
+      count:    0,
+      username: ''
     }
     this.handleClick = this.handleClick.bind(this);
   }
 
 
   handleClick() {
+    axios.get('https://api.github.com/users/npascetti')
+    .then(response => console.log(response))
     this.setState({
       count: this.state.count + 1
     })
