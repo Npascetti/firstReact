@@ -7,15 +7,15 @@ class App extends Component {
     super(props)
     this.state = {
       count:    0,
-      username: ''
+      ipsum: ''
     }
     this.handleClick = this.handleClick.bind(this);
   }
 
 
   handleClick() {
-    axios.get('https://api.github.com/users/npascetti')
-    .then(response => this.setState({username: response.data.name}))
+    axios.get('https://baconipsum.com/api/?type=meat-and-filler&paras=2')
+    .then(response => this.setState({ipsum: response.data}))
     this.setState({
       count: this.state.count + 1
     })
@@ -27,7 +27,8 @@ class App extends Component {
     return (
       <div className='button__container'>
         <button className='button' onClick = {this.handleClick}>Click Me</button>
-        <p>{this.state.username}</p>
+        <p>{this.state.ipsum[0]}</p>
+        <p>{this.state.ipsum[1]}</p>
       </div>
     )
   }
