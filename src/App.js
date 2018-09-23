@@ -15,7 +15,7 @@ class App extends Component {
 
   handleClick() {
     axios.get('https://api.github.com/users/npascetti')
-    .then(response => console.log(response))
+    .then(response => this.setState({username: response.data.name}))
     this.setState({
       count: this.state.count + 1
     })
@@ -27,6 +27,7 @@ class App extends Component {
     return (
       <div className='button__container'>
         <button className='button' onClick = {this.handleClick}>Click Me</button>
+        <p>{this.state.username}</p>
       </div>
     )
   }
