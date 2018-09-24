@@ -6,7 +6,7 @@ class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      count:    0,
+      count: 0,
       ipsum: ''
     }
     this.handleClick = this.handleClick.bind(this);
@@ -16,6 +16,7 @@ class App extends Component {
   handleClick() {
     axios.get('https://baconipsum.com/api/?type=meat-and-filler&paras=2')
     .then(response => this.setState({ipsum: response.data}))
+
     this.setState({
       count: this.state.count + 1
     })
@@ -26,7 +27,7 @@ class App extends Component {
   render () {
     return (
       <div className='button__container'>
-        <button className='button' onClick = {this.handleClick}>Click Me</button>
+        <button className='button' onClick = {this.handleClick}>Generate baconipsum</button>
         <p>{this.state.ipsum[0]}</p>
         <p>{this.state.ipsum[1]}</p>
       </div>
